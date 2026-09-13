@@ -1,25 +1,28 @@
-import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet, Link } from 'react-router-dom';
+import Landing from './pages/Landing';
 
 // Application Shell / Layout
 function AppLayout() {
   return (
     <div className="min-h-screen flex flex-col selection:bg-accent/20">
-      {/* Navbar placeholder */}
       <header className="h-16 border-b border-border flex items-center px-6 sticky top-0 bg-background/80 backdrop-blur-sm z-50">
-        <div className="font-semibold tracking-tight text-lg">Anonymous Learning</div>
+        <Link to="/" className="font-semibold tracking-tight text-lg hover:opacity-80 transition-opacity">
+          Anonymous Learning
+        </Link>
       </header>
 
       {/* Main content */}
-      <main className="flex-1 flex flex-col">
+      <main className="flex-1 flex flex-col items-center">
         <Outlet />
       </main>
 
-      {/* Footer placeholder */}
-      <footer className="py-6 px-6 border-t border-border text-sm text-muted-foreground flex justify-between">
-        <div>© 2024 Anonymous Learning</div>
-        <div className="flex gap-4">
-          <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-          <a href="#" className="hover:text-foreground transition-colors">About</a>
+      <footer className="py-8 px-6 border-t border-border text-sm text-muted-foreground flex flex-col sm:flex-row justify-between items-center gap-4 bg-background">
+        <div>© {new Date().getFullYear()} Anonymous Learning</div>
+        <div className="flex gap-6">
+          <Link to="/about" className="hover:text-foreground transition-colors">Privacy</Link>
+          <Link to="/about" className="hover:text-foreground transition-colors">How it works</Link>
+          <Link to="/about" className="hover:text-foreground transition-colors">About</Link>
+          <a href="#" className="hover:text-foreground transition-colors">GitHub</a>
         </div>
       </footer>
     </div>
@@ -43,7 +46,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<AppLayout />}>
-          <Route index element={<PlaceholderPage title="Landing Page" />} />
+          <Route index element={<Landing />} />
           <Route path="login" element={<PlaceholderPage title="Login" />} />
           <Route path="verify" element={<PlaceholderPage title="Verify" />} />
           <Route path="dashboard" element={<PlaceholderPage title="Dashboard" />} />
