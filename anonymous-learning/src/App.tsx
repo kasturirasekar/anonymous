@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Outlet, Link } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
 import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Verify from './pages/Verify';
 
 // Application Shell / Layout
 function AppLayout() {
@@ -43,13 +46,14 @@ function PlaceholderPage({ title }: { title: string }) {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<AppLayout />}>
-          <Route index element={<Landing />} />
-          <Route path="login" element={<PlaceholderPage title="Login" />} />
-          <Route path="verify" element={<PlaceholderPage title="Verify" />} />
-          <Route path="dashboard" element={<PlaceholderPage title="Dashboard" />} />
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<AppLayout />}>
+            <Route index element={<Landing />} />
+            <Route path="login" element={<Login />} />
+            <Route path="verify" element={<Verify />} />
+            <Route path="dashboard" element={<PlaceholderPage title="Dashboard" />} />
           <Route path="matchmaking" element={<PlaceholderPage title="Matchmaking" />} />
           <Route path="match-found" element={<PlaceholderPage title="Match Found" />} />
           <Route path="chat" element={<PlaceholderPage title="Chat" />} />
@@ -60,6 +64,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 
