@@ -1,17 +1,25 @@
 import { BrowserRouter as Router, Routes, Route, Outlet, Link } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
+import Dashboard from './pages/Dashboard';
 
 // Application Shell / Layout
 function AppLayout() {
+  const { user } = useAuth();
+
   return (
     <div className="min-h-screen flex flex-col selection:bg-accent/20">
-      <header className="h-16 border-b border-border flex items-center px-6 sticky top-0 bg-background/80 backdrop-blur-sm z-50">
+      <header className="h-16 border-b border-border flex items-center justify-between px-6 sticky top-0 bg-background/80 backdrop-blur-sm z-50">
         <Link to="/" className="font-semibold tracking-tight text-lg hover:opacity-80 transition-opacity">
           Anonymous Learning
         </Link>
+        {user.authenticated && (
+          <div className="text-sm font-medium px-3 py-1.5 bg-muted rounded-full text-muted-foreground border border-border">
+            Anonymous Learner
+          </div>
+        )}
       </header>
 
       {/* Main content */}
@@ -53,7 +61,7 @@ function App() {
             <Route index element={<Landing />} />
             <Route path="login" element={<Login />} />
             <Route path="verify" element={<Verify />} />
-            <Route path="dashboard" element={<PlaceholderPage title="Dashboard" />} />
+            <Route path="dashboard" element={<Dashboard />} />
           <Route path="matchmaking" element={<PlaceholderPage title="Matchmaking" />} />
           <Route path="match-found" element={<PlaceholderPage title="Match Found" />} />
           <Route path="chat" element={<PlaceholderPage title="Chat" />} />
