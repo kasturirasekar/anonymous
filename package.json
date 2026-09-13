@@ -1,0 +1,17 @@
+{
+  "name": "anonymous-learning-chat",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*", "anonymous-learning"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "start": "npm run start --workspace=apps/server"
+  },
+  "dependencies": {
+    "lucide-react": "^1.45.0",
+    "react-router-dom": "^7.18.3"
+  }
+}
