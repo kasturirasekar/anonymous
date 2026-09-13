@@ -7,6 +7,9 @@ import Dashboard from './pages/Dashboard';
 import Matchmaking from './pages/Matchmaking';
 import MatchFound from './pages/MatchFound';
 import Chat from './pages/Chat';
+import SessionEnded from './pages/SessionEnded';
+import Rate from './pages/Rate';
+import About from './pages/About';
 
 // Application Shell / Layout
 function AppLayout() {
@@ -68,10 +71,10 @@ function App() {
             <Route path="matchmaking" element={<Matchmaking />} />
             <Route path="match-found" element={<MatchFound />} />
             <Route path="chat" element={<Chat />} />
-          <Route path="session-ended" element={<PlaceholderPage title="Session Ended" />} />
-          <Route path="rate" element={<PlaceholderPage title="Rate Session" />} />
-          <Route path="about" element={<PlaceholderPage title="About" />} />
-          <Route path="*" element={<PlaceholderPage title="404 - Not Found" />} />
+            <Route path="session-ended" element={<SessionEnded />} />
+            <Route path="rate" element={<Rate />} />
+            <Route path="about" element={<About />} />
+            <Route path="*" element={<PlaceholderPage title="404 - Not Found" />} />
         </Route>
       </Routes>
     </Router>
