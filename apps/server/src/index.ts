@@ -1,12 +1,12 @@
 import { buildApp } from './app';
+import { env } from './config/env';
 
 const start = async () => {
   try {
     const app = await buildApp();
-    const port = parseInt(process.env.PORT || '3001', 10);
 
-    await app.listen({ port, host: '0.0.0.0' });
-    app.log.info(`Server listening on port ${port}`);
+    await app.listen({ port: env.PORT, host: '0.0.0.0' });
+    app.log.info(`Server listening on port ${env.PORT}`);
   } catch (err) {
     console.error(err);
     process.exit(1);
