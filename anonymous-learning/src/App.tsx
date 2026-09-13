@@ -4,6 +4,8 @@ import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Verify from './pages/Verify';
 import Dashboard from './pages/Dashboard';
+import Matchmaking from './pages/Matchmaking';
+import MatchFound from './pages/MatchFound';
 
 // Application Shell / Layout
 function AppLayout() {
@@ -62,9 +64,9 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="verify" element={<Verify />} />
             <Route path="dashboard" element={<Dashboard />} />
-          <Route path="matchmaking" element={<PlaceholderPage title="Matchmaking" />} />
-          <Route path="match-found" element={<PlaceholderPage title="Match Found" />} />
-          <Route path="chat" element={<PlaceholderPage title="Chat" />} />
+            <Route path="matchmaking" element={<Matchmaking />} />
+            <Route path="match-found" element={<MatchFound />} />
+            <Route path="chat" element={<PlaceholderPage title="Chat" />} />
           <Route path="session-ended" element={<PlaceholderPage title="Session Ended" />} />
           <Route path="rate" element={<PlaceholderPage title="Rate Session" />} />
           <Route path="about" element={<PlaceholderPage title="About" />} />
