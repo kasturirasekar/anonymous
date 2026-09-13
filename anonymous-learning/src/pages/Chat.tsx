@@ -4,6 +4,8 @@ import { Shield } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { ChatMessage, type MessageType } from '../components/ChatMessage';
 import { ChatInput } from '../components/ChatInput';
+import { SessionTimer } from '../components/SessionTimer';
+import { SafetyMenu } from '../components/SafetyMenu';
 
 export default function Chat() {
   const navigate = useNavigate();
@@ -65,6 +67,15 @@ export default function Chat() {
     }, 1500 + Math.random() * 2000); // 1.5 - 3.5 seconds delay
   };
 
+  const handleEndSession = () => {
+    navigate('/session-ended');
+  };
+
+  const handleBlockAndEnd = () => {
+    // In a real app, this would hit a backend to block the user ID
+    navigate('/session-ended');
+  };
+
   return (
     <div className="flex-1 w-full max-w-5xl mx-auto flex flex-col h-[calc(100vh-4rem)]">
       
@@ -78,16 +89,9 @@ export default function Chat() {
           </span>
         </div>
         
-        <div className="flex items-center gap-4">
-          {/* Timer Placeholder - will be implemented in next milestone */}
-          <div className="text-sm font-medium font-mono bg-muted px-3 py-1 rounded-md">
-            15:00
-          </div>
-          
-          {/* Safety Menu Placeholder */}
-          <button className="text-sm font-medium text-red-500 hover:bg-red-50 px-3 py-1.5 rounded-md transition-colors">
-            End Session
-          </button>
+        <div className="flex items-center gap-2">
+          <SessionTimer onEndSession={handleEndSession} />
+          <SafetyMenu onEndSession={handleEndSession} onBlockAndEnd={handleBlockAndEnd} />
         </div>
       </div>
 
