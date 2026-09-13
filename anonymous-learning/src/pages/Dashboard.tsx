@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Lightbulb, ArrowRight } from 'lucide-react';
-import { useAuth, Intent } from '../contexts/AuthContext';
+import { useAuth, type Intent } from '../contexts/AuthContext';
 import { IntentCard } from '../components/IntentCard';
 import { TopicSelector } from '../components/TopicSelector';
 import { Button } from '../components/Button';
